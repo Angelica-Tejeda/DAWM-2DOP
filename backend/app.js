@@ -4,10 +4,27 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+var relacionalRouter = require('./routes/relacional.routes');
+var no_relacionalRouter = require('./routes/no_relacional.routes');
 
 var app = express();
+
+// Instaciando la Base de datos Relacional y no relacional
+const dbRelacional = require("./models");
+dbRelacional.sequelize.sync();
+
+const dbNoRelacional = require("./collections");
+
+// Instaciando cors para conectar puertos
+var corsOptions = {origin: "http://localhost:4200"};
+app.use(cors(corsOptions)); 
+
+// Instanciando body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +36,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//Estableciendo rustas
+app.use('/relacional', relacionalRouter);
+app.use('/norelacional', no_relacionalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
