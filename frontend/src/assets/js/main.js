@@ -110,16 +110,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-
-
-
 });
 
 function cargarGaleria() {
     let galeria = document.getElementsByClassName('slideshow-container')[0];
     let puntos = document.getElementById('puntos');
 
-    fetch('assets/json/imagenes.json')
+    fetch('http://localhost:3000/relacional/galeria')
         .then((resultado) => {
             return resultado.text();
         })
@@ -130,14 +127,16 @@ function cargarGaleria() {
             for (let dato of json) {
                 let divImagen = document.createElement('div');
                 divImagen.setAttribute('class', 'mySlides fadeImagen');
-                let imagen = document.createElement('img');
-                imagen.src = dato.land;
+
                 let caption = document.createElement('div');
                 caption.setAttribute('class', 'text');
-                caption.textContent = dato.texto;
+                caption.textContent = dato.nombre;
+                divImagen.appendChild(caption);
+
+                let imagen = document.createElement('img');
+                imagen.src = dato.imagenes[0].imgSRC;
 
                 divImagen.appendChild(imagen);
-                divImagen.appendChild(caption);
                 galeria.appendChild(divImagen);
 
                 let span = document.createElement('span');
@@ -168,9 +167,6 @@ function cargarGaleria() {
         .then(() => {
             showSlides(slideIndex);
         })
-
-
-
 }
 
 // Next/previous controls
@@ -202,5 +198,3 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " activeDot";
 }
-
-
