@@ -7,9 +7,9 @@ import{BodyComponent,
     MailComponent,
     WidgetsComponent,
     FormsComponent,
-    Form2Component
-
-
+    Form2Component,
+    TablaPlatilloComponent,
+    TablaHistorialComponent
 } from "./components/index.paginas"
 
 const app_routes:Routes = [
@@ -21,6 +21,8 @@ const app_routes:Routes = [
     {path: 'widgets', component:WidgetsComponent,},
     {path: 'forms', component:FormsComponent},
     {path: 'form2', component:Form2Component},
+    {path: 'tplatillo', component: TablaPlatilloComponent},
+    {path: 'thistorial', component: TablaHistorialComponent},
    
     {path: '**', pathMatch: 'full', redirectTo: '' }
     

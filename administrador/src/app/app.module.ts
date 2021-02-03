@@ -20,7 +20,9 @@ import { Form2Component } from './components/form2/form2.component';
 
 import { FormsModule } from "@angular/forms"
 import { HttpClientModule } from "@angular/common/http"
-import { PlatilloService } from "./services/platillo.service"
+import { PlatilloService } from "./services/platillo.service";
+import { TablaPlatilloComponent } from './components/tabla-platillo/tabla-platillo.component';
+import { TablaHistorialComponent } from './components/tabla-historial/tabla-historial.component'
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { PlatilloService } from "./services/platillo.service"
     DataTComponent,
     FormsComponent,
     MailComponent,
-    Form2Component
+    Form2Component,
+    TablaPlatilloComponent,
+    TablaHistorialComponent
   
   ],
   imports: [

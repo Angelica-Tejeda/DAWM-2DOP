@@ -1,18 +1,19 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { GaleriaService } from 'src/app/services/galeria.service';
 
 @Component({
   selector: 'app-data-t',
   templateUrl: './data-t.component.html',
-  styles: ["assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css",
-  "assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
-
-
-
+  styles: [
+    "assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css",
+    "assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"
   ]
 })
-export class DataTComponent{
+export class DataTComponent implements OnInit{
 
-  constructor() { 
+  datos: any = [];
+
+  constructor(private galeriaServices: GaleriaService) { 
 
     let script = document.createElement("script");
     let script2 = document.createElement("script");
@@ -38,7 +39,12 @@ export class DataTComponent{
     body.appendChild(script5);
     body.appendChild(script6);
   }
-
-  
-
+  ngOnInit() {
+    this.galeriaServices.getGalerias().subscribe(
+      res => {
+        this.datos = res;
+      }, 
+      err => console.error(err)
+    )
+  }
 }

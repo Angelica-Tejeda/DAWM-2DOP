@@ -50,14 +50,20 @@ export class FormsComponent {
 
     this.galeriaServices.saveGaleria(this.galeria)
     .subscribe(
-      res => console.log(res),
-      err => console.error(err) 
-    )
+      res => {
+        console.log(res);
 
-    this.imagenServices.saveImagen(this.imagen)
-    .subscribe(
-      res => console.log(res),
+        let respuesta = res['id'];
+        this.imagen.galeriaId = respuesta;
+        this.imagenServices.saveImagen(this.imagen)
+        .subscribe(
+          res => console.log(res),
+          err => console.error(err) 
+        )
+      },
       err => console.error(err) 
     )
+    
+    
   }
 }
