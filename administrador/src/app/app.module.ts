@@ -18,6 +18,7 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { DataTComponent } from './components/data-t/data-t.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { MailComponent } from './components/mail/mail.component';
+import { Form2Component } from './components/form2/form2.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MailComponent } from './components/mail/mail.component';
     ButtonsComponent,
     DataTComponent,
     FormsComponent,
-    MailComponent
+    MailComponent,
+    Form2Component
   
   ],
   imports: [

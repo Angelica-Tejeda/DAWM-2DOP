@@ -1,4 +1,4 @@
-import StyledFilterItems from './StyledFilterItems';
+/*import StyledFilterItems from './StyledFilterItems';
 import { Filter } from '../types';
 import FilterItem from '../FilterItem';
 import FilterizrOptions from '../FilterizrOptions/FilterizrOptions';
@@ -20,4 +20,4 @@ export default class FilterItems implements Destructible, Styleable {
     shuffle(): void;
     private search;
     private shouldBeFiltered;
-}
+}*/
