@@ -200,33 +200,34 @@
                 </h3>
             </div>
             <div id="formulario-steps" class="inicial">
-                <form id="contactForm" name="sentMessage" action="enviar.php" method="POST">
+                <!-- action="enviar.php" method="POST"-->
+                <form id="contactForm" name="sentMessage">
                     <div id="bloque-1" class="row align-items-stretch mb-4 inicial">
                         <div class="col-md-1">
                             <label for="nombre">Nombre:</label>
                         </div>
                         <div class="col-md-11">
-                            <input class="form-control" id="nombre" name="nombre" type="text"
+                            <input class="form-control" id="nombre" name="nombre" type="text" [(ngModel)]="correo.nombre"
                                 placeholder="Ingrese su nombre y Apellido" required="required"
                                 data-validation-required-message="Ingrese su nombre." />
                         </div>
                     </div>
                     <div id="bloque-2" class="row align-items-stretch mb-2 inicial">
                         <div class="col-md-1">
-                            <label for="nombre">Fecha de Nacimiento:</label>
+                            <label for="fecha">Fecha de Nacimiento:</label>
                         </div>
                         <div class="col-md-11">
-                            <input class="form-control" id="fecha" name="fecha" type="date" min="1990-01-01"
+                            <input class="form-control" id="fecha" name="fecha" type="date" min="1990-01-01" [(ngModel)]="correo.fechaNac"
                                 max="2021-12-31" required="required"
                                 data-validation-required-message="Ingrese su fecha de nacimiento." />
                         </div>
                     </div>
                     <div id="bloque-3" class="row align-items-stretch mb-4 inicial">
                         <div class="col-md-1">
-                            <label for="nombre">Ciudad:</label>
+                            <label for="ciudad">Ciudad:</label>
                         </div>
                         <div class="col-md-11">
-                            <select class="form-control" name="ciudad" required="required"
+                            <select class="form-control" name="ciudad" required="required" [(ngModel)]="correo.ciudad"
                                 data-validation-required-message="Ingrese su ciudad de origen.">
                                 <option>Guayaquil</option>
                                 <option>Quito</option>
@@ -238,38 +239,39 @@
                     </div>
                     <div id="bloque-4" class="row align-items-stretch mb-4 inicial">
                         <div class="col-md-1">
-                            <label for="nombre">Telefono:</label>
+                            <label for="telefono">Telefono:</label>
                         </div>
                         <div class="col-md-11">
-                            <input class="form-control" id="telefono" name="telefono" type="tel"
+                            <input class="form-control" id="telefono" name="telefono" type="tel" [(ngModel)]="correo.telefono"
                                 placeholder="Ingrese su numero de telefono" required="required"
                                 data-validation-required-message="Ingrese su numero de telefono." />
                         </div>
                     </div>
                     <div id="bloque-5" class="row align-items-stretch mb-4 inicial">
                         <div class="col-md-1">
-                            <label for="nombre">Correo:</label>
+                            <label for="email">Correo:</label>
                         </div>
                         <div class="col-md-11">
-                            <input class="form-control" id="email" name="email" type="email"
+                            <input class="form-control" id="email" name="email" type="email" [(ngModel)]="correo.correo"
                                 placeholder="Ingrese su correo electronico" required="required"
                                 data-validation-required-message="Ingrese su email." />
                         </div>
                     </div>
                     <div id="bloque-6" class="row align-items-stretch mb-4 inicial">
                         <div class="col-md-1">
-                            <label for="nombre">Mensaje:</label>
+                            <label for="mensaje">Mensaje:</label>
                         </div>
                         <div class="col-md-11">
-                            <textarea class="form-control" id="mensaje" name="mensaje"
+                            <textarea class="form-control" id="mensaje" name="mensaje" [(ngModel)]="correo.mensaje"
                                 placeholder="Ingrese el mensaje/comentario que desea enviar" rows="4"
                                 required="required" data-validation-required-message="Ingrese un mensaje."></textarea>
                             <br>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary btn-xl text-uppercase inicial" id="submit"
-                            type="submit">Enviar</button>
+                        <button class="btn btn-primary btn-xl text-uppercase inicial" id="submit" type="submit" (click)="enviarMensaje()">
+                            Enviar
+                        </button>
                     </div>
                 </form>
                 <button class="btn btn-primary btn-xl text-uppercase inicial" id="boton" value="bloque-1"
