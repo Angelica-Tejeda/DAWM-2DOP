@@ -23,4 +23,9 @@ router.get('/imagen', controller.findAllImagen);
 router.put('/imagen/:id', controller.updateImagen);
 router.delete('/imagen/:id', controller.deleteImagen);
 
+router.post('/admin', controller.saveAdmin);
+router.get('/admin', controller.findAllAdmin);
+router.put('/admin/:id', controller.updateAdmin);
+router.delete('/admin/:id', controller.deleteAdmin);
+
 module.exports = router;

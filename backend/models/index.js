@@ -23,6 +23,7 @@ db.galeria = require("./galeria.model.js")(sequelize, Sequelize);
 db.imagen = require("./imagen.model.js")(sequelize, Sequelize);
 db.correo = require("./correo.model.js")(sequelize, Sequelize);
 db.menu = require("./menu.model.js")(sequelize, Sequelize);
+db.admin = require("./admin.model.js")(sequelize, Sequelize);
 
 db.galeria.hasMany(db.imagen, { as: "imagenes" });
 db.imagen.belongsTo(db.galeria, {

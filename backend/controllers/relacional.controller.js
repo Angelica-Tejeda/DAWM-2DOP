@@ -3,6 +3,7 @@ const Menu    = db.menu;
 const Correo  = db.correo;
 const Imagen  = db.imagen;
 const Galeria = db.galeria;
+const Admin = db.admin;
 const Op = db.Sequelize.Op;
 
 //----------------------------------------------------------Seccion Galeria----------------------------------------------------------
@@ -101,9 +102,9 @@ exports.updateMenu = (req, res) => {
   })
     .then(num => {
       if (num == 1) {
-        res.send({message: "El Menu fue actualizada correctamente."});
+        res.send({message: "El Menu fue actualizado correctamente."});
       } else {
-        res.send({message: "El Menu no pudo ser actualizada"});
+        res.send({message: "El Menu no pudo ser actualizado"});
       }
     })
     .catch(err => {
@@ -119,9 +120,9 @@ exports.deleteMenu = (req, res) => {
   })
     .then(num => {
       if (num == 1) {
-        res.send({message: "El Menu fue eliminada exitosamente"});
+        res.send({message: "El Menu fue eliminado exitosamente"});
       } else {
-        res.send({message:"El Menu no pudo ser eliminada"});
+        res.send({message:"El Menu no pudo ser eliminado"});
       }
     })
     .catch(err => {
@@ -231,9 +232,9 @@ exports.updateImagen = (req, res) => {
   })
     .then(num => {
       if (num == 1) {
-        res.send({message: "La imagen fue actualizada correctamente."});
+        res.send({message: "La Imagen fue actualizada correctamente."});
       } else {
-        res.send({message: "La imagen no pudo ser actualizada"});
+        res.send({message: "La Imagen no pudo ser actualizada"});
       }
     })
     .catch(err => {
@@ -252,6 +253,68 @@ exports.deleteImagen = (req, res) => {
         res.send({message: "La Imagen fue eliminada exitosamente"});
       } else {
         res.send({message:"La Imagen no pudo ser eliminada"});
+      }
+    })
+    .catch(err => {
+      res.status(500).send({message: err});
+    });
+};
+
+//----------------------------------------------------------Seccion Admin----------------------------------------------------------
+exports.saveAdmin =(req, res) => {
+  const admin = {
+    user:       req.body.user,
+    password:    req.body.password
+  };
+
+  Admin.create(admin)
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({message: err});
+  });
+};
+
+exports.findAllAdmin = (req, res) => {
+  Admin.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({message: err});
+    });
+};
+
+exports.updateAdmin = (req, res) => {
+  const id = req.params.id;
+
+  Admin.update(req.body, {
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({message: "El Admin fue actualizado correctamente."});
+      } else {
+        res.send({message: "El Admin no pudo ser actualizado"});
+      }
+    })
+    .catch(err => {
+      res.status(500).send({message: err});
+    });
+};
+
+exports.deleteAdmin = (req, res) => {
+  const id = req.params.id;
+
+  Admin.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({message: "El Admin fue eliminado exitosamente"});
+      } else {
+        res.send({message:"El Admin no pudo ser eliminado"});
       }
     })
     .catch(err => {
