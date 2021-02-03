@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         else{
             item.style.display = "none"
         }
-        console.log(cont)
       }
     }else{
       for(let item of burbujas){

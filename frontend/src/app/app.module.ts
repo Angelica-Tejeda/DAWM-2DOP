@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-//borrar si falla
 import { FormsModule } from "@angular/forms"
 import { HttpClientModule } from "@angular/common/http"
 import { CorreoService } from "./services/correo.service"
@@ -19,7 +18,6 @@ import { BodyComponent } from './body/body.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //borrar si falla
     FormsModule,
     HttpClientModule
   ],

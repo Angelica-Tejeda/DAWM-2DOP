@@ -1,7 +1,5 @@
 import{app_routing} from "./app.routes";
 
-
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -19,6 +17,10 @@ import { DataTComponent } from './components/data-t/data-t.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { MailComponent } from './components/mail/mail.component';
 import { Form2Component } from './components/form2/form2.component';
+
+import { FormsModule } from "@angular/forms"
+import { HttpClientModule } from "@angular/common/http"
+import { PlatilloService } from "./services/platillo.service"
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { Form2Component } from './components/form2/form2.component';
   ],
   imports: [
     BrowserModule,
-    app_routing
+    app_routing,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
