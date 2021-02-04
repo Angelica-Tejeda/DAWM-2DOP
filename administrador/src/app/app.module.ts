@@ -24,7 +24,8 @@ import { PlatilloService } from "./services/platillo.service";
 import { TablaPlatilloComponent } from './components/tabla-platillo/tabla-platillo.component';
 import { TablaHistorialComponent } from './components/tabla-historial/tabla-historial.component';
 import { FormHistorialComponent } from './components/form-historial/form-historial.component';
-import { Mail2Component } from './components/mail2/mail2.component'
+import { Mail2Component } from './components/mail2/mail2.component';
+import { LoginComponent } from './components/login/login.component'
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { Mail2Component } from './components/mail2/mail2.component'
     TablaPlatilloComponent,
     TablaHistorialComponent,
     FormHistorialComponent,
-    Mail2Component
+    Mail2Component,
+    LoginComponent
   
   ],
   imports: [

@@ -8,7 +8,7 @@ import { CorreoService } from 'src/app/services/correo.service';
   ]
 })
 export class Mail2Component implements OnInit {
-  correo: Correo = {
+  correo: any = {
     id : "1",
     nombre : 'hola' ,
     correo : "hola",
