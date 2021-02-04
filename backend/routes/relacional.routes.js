@@ -32,4 +32,9 @@ router.get('/admin', controller.findAllAdmin);
 router.put('/admin/:id', controller.updateAdmin);
 router.delete('/admin/:id', controller.deleteAdmin);
 
+router.post('/ingresar', (req, res) => {
+    res.cookie('user', req.body.user, {maxAge: 1000 * 60 * 15})
+    res.cookie('password', req.body.password,{maxAge: 1000 * 60 * 15})
+ });
+
 module.exports = router;
