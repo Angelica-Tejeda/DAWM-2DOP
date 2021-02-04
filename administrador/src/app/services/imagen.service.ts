@@ -23,6 +23,14 @@ export class ImagenService {
     return this.http.get(`${this.URL}/${id}`);
   }
 
+  getImagenByIDGaleria(id: string){
+    return this.http.get(`${this.URL}/galeria/${id}`);
+  }
+
+  getImagenByIDMenu(id: string){
+    return this.http.get(`${this.URL}/menu/${id}`);
+  }
+
   saveImagen(imagen: Imagen) {
     return this.http.post(`${this.URL}`, imagen );
   }
@@ -31,7 +39,7 @@ export class ImagenService {
     return this.http.delete(`${this.URL}/${id}`);
   }
 
-  updateImagen(id: string, updateImagen: Imagen ){
+  updateImagen(id: string|number, updateImagen: Imagen ){
     return this.http.put(`${this.URL}/${id}`, updateImagen);
   }
 }

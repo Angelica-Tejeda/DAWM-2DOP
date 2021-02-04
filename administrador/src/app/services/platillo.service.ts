@@ -31,7 +31,7 @@ export class PlatilloService {
     return this.http.delete(`${this.URL}/${id}`);
   }
 
-  updatePlatillo(id: string, updatePlatillo: Platillo ){
+  updatePlatillo(id: string|number, updatePlatillo: Platillo ){
     return this.http.put(`${this.URL}/${id}`, updatePlatillo);
   }
 }

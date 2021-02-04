@@ -47,9 +47,9 @@
                         <td>{{dato.ingredientes}}</td>
                         <td>{{dato.imagenes[0].imgSRC}}</td>
                         <td align="center">
-                          <!--a>
+                          <a (click)=editPlatillo(dato.id)>
                             <i class="far fa-edit"></i>
-                          </a-->
+                          </a>
                           <a (click)=deletePlatillo(dato.id)>
                             <i class="far fa-trash-alt"></i>
                           </a>

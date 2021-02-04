@@ -32,6 +32,18 @@ exports.findAllGaleria = (req, res) => {
     });
 };
 
+exports.findByIDGaleria = (req, res) => {
+  const id = req.params.id;
+
+  Galeria.findByPk(id)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({message: err});
+    });
+};
+
 exports.updateGaleria = (req, res) => {
   const id = req.params.id;
 
@@ -86,6 +98,18 @@ exports.saveMenu = (req, res) => {
 
 exports.findAllMenu = (req, res) => {
   Menu.findAll({include: ["imagenes"]})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({message: err});
+    });
+};
+
+exports.findByIDMenu = (req, res) => {
+  const id = req.params.id;
+
+  Menu.findByPk(id)
     .then(data => {
       res.send(data);
     })
@@ -160,6 +184,18 @@ exports.findAllCorreo = (req, res) => {
     });
 };
 
+exports.findByIDCorreo = (req, res) => {
+  const id = req.params.id;
+
+  Correo.findByPk(id)
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({message: err});
+    });
+};
+
 exports.updateCorreo = (req, res) => {
   const id = req.params.id;
 
@@ -216,6 +252,18 @@ exports.saveImagen =(req, res) => {
 
 exports.findAllImagen = (req, res) => {
   Imagen.findAll()
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({message: err});
+    });
+};
+
+exports.findByIDImagen = (req, res) => {
+  const id = req.params.id;
+
+  Imagen.findByPk(id)
     .then(data => {
       res.send(data);
     })

@@ -33,7 +33,6 @@
                     <table id="tablaGaleria" class="table table-bordered table-hover">
                       <thead>
                         <tr>
-                          <th>ID</th>
                           <th>Platillo</th>
                           <th>Precio</th>
                           <th>Fecha del Pedido</th>
@@ -41,7 +40,6 @@
                       </thead>
                       <tbody *ngFor="let dato of datos">
                         <tr>
-                          <td>{{dato._id}}</td>
                           <td>{{dato.platillo}}</td>
                           <td>{{dato.precio}}</td>
                           <td>{{dato.fecha}}</td>

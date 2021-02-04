@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Historial } from 'src/app/model/historial';
 import { HistorialService } from 'src/app/services/historial.service';
 
@@ -18,13 +19,14 @@ export class FormHistorialComponent {
     fecha: ''
   };
 
-  constructor(private historialService: HistorialService) { }
+  constructor(private historialService: HistorialService,private router: Router) { }
 
   saveHistorial(){
     this.historialService.saveHistorial(this.historial)
     .subscribe(
       res => {
-        console.log(res);
+        console.log(res),
+        this.router.navigate(['/thistorial'])
       },
       err => console.error(err) 
     )

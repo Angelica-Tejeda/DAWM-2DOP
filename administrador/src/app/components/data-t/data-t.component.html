@@ -55,9 +55,9 @@
                     <td>{{dato.descripcion}}</td>
                     <td>{{dato.imagenes[0].imgSRC}}</td>
                     <td align="center">
-                      <!--a>
+                      <a (click)=editGaleria(dato.id)>
                         <i class="far fa-edit"></i>
-                      </a-->
+                      </a>
                       <a (click)=deleteGaleria(dato.id)>
                         <i class="far fa-trash-alt"></i>
                       </a>

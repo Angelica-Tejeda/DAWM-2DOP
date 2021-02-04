@@ -17,7 +17,6 @@ export class TablaHistorialComponent implements OnInit {
     this.historialServices.getHistorial().subscribe(
       res => {
         this.datos = res;
-        console.log(res)
       }, 
       err => console.error(err)
     )
