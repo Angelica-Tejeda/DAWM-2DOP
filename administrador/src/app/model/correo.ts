@@ -1,5 +1,5 @@
 export class Correo{
-    id?: number;
+    id?: string;
     nombre: string;
     correo: string;
     telefono: string;
@@ -10,7 +10,7 @@ export class Correo{
 
 
 
-    constructor(id=0, nombre="", correo="",telefono="",ciudad="",mensaje="",createdAt=null){
+    constructor(id="", nombre="", correo="",telefono="",ciudad="",mensaje="",createdAt=null){
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;

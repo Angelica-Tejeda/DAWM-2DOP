@@ -32,7 +32,7 @@ export class MailComponent implements OnInit{
   
    ngOnInit() {
     this.getCorreos();
-   
+  
   }
 
   getCorreos(){
