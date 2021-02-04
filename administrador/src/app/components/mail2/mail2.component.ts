@@ -19,7 +19,7 @@ export class Mail2Component implements OnInit {
 
   } ;
 
-
+  correos: any = []
 
  
   constructor(private correoServices: CorreoService) { 
@@ -46,7 +46,7 @@ export class Mail2Component implements OnInit {
   getCorreo(){
     this.correoServices.getCorreo("id:1").subscribe(
       res => {
-        this.correo = res;
+        this.correos = res;
         console.log(this.correo)
       }, 
       err => console.error(err)
