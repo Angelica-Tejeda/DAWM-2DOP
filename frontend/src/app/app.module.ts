@@ -8,13 +8,15 @@ import { CorreoService } from "./services/correo.service"
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BodyComponent
+    BodyComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
