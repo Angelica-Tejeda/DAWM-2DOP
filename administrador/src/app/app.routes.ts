@@ -9,7 +9,8 @@ import{BodyComponent,
     FormsComponent,
     Form2Component,
     TablaPlatilloComponent,
-    TablaHistorialComponent
+    TablaHistorialComponent,
+    FormHistorialComponent
 } from "./components/index.paginas"
 
 const app_routes:Routes = [
@@ -23,6 +24,7 @@ const app_routes:Routes = [
     {path: 'form2', component:Form2Component},
     {path: 'tplatillo', component: TablaPlatilloComponent},
     {path: 'thistorial', component: TablaHistorialComponent},
+    {path: 'formhistorial', component: FormHistorialComponent},
    
     {path: '**', pathMatch: 'full', redirectTo: '' }
     

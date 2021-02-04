@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { GaleriaService } from 'src/app/services/galeria.service';
+import { ImagenService } from 'src/app/services/imagen.service';
 
 @Component({
   selector: 'app-data-t',
@@ -12,8 +13,9 @@ import { GaleriaService } from 'src/app/services/galeria.service';
 export class DataTComponent implements OnInit{
 
   datos: any = [];
+  imagenes: any = [];
 
-  constructor(private galeriaServices: GaleriaService) { 
+  constructor(private galeriaServices: GaleriaService, private imagenService: ImagenService) { 
 
     let script = document.createElement("script");
     let script2 = document.createElement("script");
@@ -40,11 +42,49 @@ export class DataTComponent implements OnInit{
     body.appendChild(script6);
   }
   ngOnInit() {
+    this.getGaleria();
+  }
+
+  getGaleria(){
     this.galeriaServices.getGalerias().subscribe(
       res => {
         this.datos = res;
       }, 
       err => console.error(err)
     )
+  }
+
+  getImagenes(){
+    this.imagenService.getImagenes().subscribe(
+      res => {
+        this.imagenes = res;
+      }, 
+      err => console.error(err)
+    )
+  }
+
+  deleteGaleria(id: string){
+    this.getImagenes()
+
+    //buscando el ID de la imagen
+    this.imagenes.forEach(imagen => {
+      if(imagen.galeriaId ==  id){
+        this.imagenService.deleteImagen(imagen.id)
+          .subscribe(
+            res => {
+              console.log(res)
+            },
+            err => console.error(err)
+          )
+        this.galeriaServices.deleteGaleria(id)
+          .subscribe(
+            res => {
+              console.log(res),
+              this.getGaleria()
+            },
+            err => console.error(err)
+          )
+      }
+    });
   }
 }

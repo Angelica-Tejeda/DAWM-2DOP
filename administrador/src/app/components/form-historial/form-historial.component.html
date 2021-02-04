@@ -14,12 +14,12 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>Insertar Platillo</h1>
+                <h1>Insertar Historial</h1>
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Insertar Platillo</li>
+                  <li class="breadcrumb-item active">Insertar Historial</li>
                 </ol>
               </div>
             </div>
@@ -42,22 +42,22 @@
                   <form role="form" id="quickForm">
                     <div class="card-body">
                       <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese el nombre del platillo" [(ngModel)]="platillo.nombre">
+                        <label for="nombre">Platillo</label>
+                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese el nombre del platillo" [(ngModel)]="historial.platillo">
                       </div>
                       <div class="form-group">
-                        <label for="ingredientes">Ingredientes</label>
-                        <input type="text" name="ingredientes" class="form-control" id="ingredientes" placeholder="Ingrese los ingredientes usados en el platillo" [(ngModel)]="platillo.ingredientes">
+                        <label for="ingredientes">Precio</label>
+                        <input type="text" name="ingredientes" class="form-control" id="ingredientes" placeholder="Ingrese el precio del platillo" [(ngModel)]="historial.precio">
                       </div>
                       <div class="form-group">
-                        <label for="fuente">Fuente</label>
-                        <input type="text" name="nombre" class="form-control" id="fuente" placeholder="Ingrese la URL de la imagen del platillo" [(ngModel)]="imagen.imgSRC">
+                        <label for="fuente">Fecha</label>
+                        <input type="date" name="nombre" class="form-control" id="fuente" placeholder="Ingrese la URL de la imagen del platillo" [(ngModel)]="historial.fecha">
                       </div>
                    
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary" (click)="savePlatillo()">Enviar</button>
+                      <button type="submit" class="btn btn-primary" (click)="saveHistorial()">Enviar</button>
                     </div>
                   </form>
                 </div>
