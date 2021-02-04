@@ -1,7 +1,7 @@
-const selector = document.getElementById('filtro');
+document.getElementById('filtro').addEventListener('change', (event) => {
 
-selector.addEventListener('change', (event) => {
   filtrarPlatillo(event.target.value);
+
 });
 
 function filtrarPlatillo(platillo){

@@ -19,7 +19,7 @@ dbRelacional.sequelize.sync();
 const dbNoRelacional = require("./collections");
 
 // Instaciando cors para conectar puertos
-var corsOptions = {origin: "http://localhost:4200"};
+var corsOptions = {origin: ["http://localhost:4200", "http://localhost:4400"]};
 app.use(cors(corsOptions)); 
 
 // Instanciando body-parser

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CorreoService } from 'src/app/services/correo.service';
 
 @Component({
   selector: 'app-mail',
@@ -6,9 +7,11 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class MailComponent {
+export class MailComponent implements OnInit{
+  correos: any = [];
 
-  constructor() {
+
+  constructor(private correoServices: CorreoService) {
     let script = document.createElement("script");
     let script2 = document.createElement("script");
     let script3 = document.createElement("script");
@@ -27,7 +30,20 @@ export class MailComponent {
    }
 
   
-   
-
+   ngOnInit() {
+    this.getCorreos();
   
+  }
+
+  getCorreos(){
+    this.correoServices.getCorreos().subscribe(
+      res => {
+        this.correos = res;
+      }, 
+      err => console.error(err)
+    )
+  }
+
+
+
 }

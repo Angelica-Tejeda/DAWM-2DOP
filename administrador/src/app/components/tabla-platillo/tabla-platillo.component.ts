@@ -18,6 +18,7 @@ export class TablaPlatilloComponent implements OnInit {
 
   ngOnInit() {
     this.getPlatillos();
+    
   }
 
   getPlatillos(){
