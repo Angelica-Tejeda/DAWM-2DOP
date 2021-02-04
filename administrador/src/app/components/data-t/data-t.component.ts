@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { GaleriaService } from 'src/app/services/galeria.service';
 import { ImagenService } from 'src/app/services/imagen.service';
 
@@ -15,7 +16,7 @@ export class DataTComponent implements OnInit{
   datos: any = [];
   imagenes: any = [];
 
-  constructor(private galeriaServices: GaleriaService, private imagenService: ImagenService) { 
+  constructor(private galeriaServices: GaleriaService, private imagenService: ImagenService, private router: Router) { 
 
     let script = document.createElement("script");
     let script2 = document.createElement("script");
@@ -61,6 +62,10 @@ export class DataTComponent implements OnInit{
       }, 
       err => console.error(err)
     )
+  }
+
+  editGaleria(id: string){
+    this.router.navigate([`forms/${id}`]);
   }
 
   deleteGaleria(id: string){

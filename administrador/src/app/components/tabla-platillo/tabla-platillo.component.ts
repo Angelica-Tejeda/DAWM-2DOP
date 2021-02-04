@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlatilloService } from 'src/app/services/platillo.service';
 import { ImagenService } from 'src/app/services/imagen.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabla-platillo',
@@ -12,7 +13,7 @@ export class TablaPlatilloComponent implements OnInit {
   datos: any = [];
   imagenes: any = [];
 
-  constructor(private platilloServices: PlatilloService, private imagenService: ImagenService) {
+  constructor(private platilloServices: PlatilloService, private imagenService: ImagenService, private router: Router) {
   }
 
   ngOnInit() {
@@ -27,6 +28,10 @@ export class TablaPlatilloComponent implements OnInit {
       }, 
       err => console.error(err)
     )
+  }
+
+  editPlatillo(id: string){
+    this.router.navigate([`form2/${id}`]);
   }
 
   getImagenes(){

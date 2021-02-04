@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Imagen } from 'src/app/model/imagen';
 import { Platillo } from 'src/app/model/platillo';
 import { ImagenService } from 'src/app/services/imagen.service';
@@ -10,7 +11,7 @@ import { PlatilloService } from 'src/app/services/platillo.service';
   styles: [
   ]
 })
-export class Form2Component  {
+export class Form2Component implements OnInit{
 
   platillo: Platillo = {
     id: 0,
@@ -18,13 +19,43 @@ export class Form2Component  {
     ingredientes: ''
   };
 
+  imagenes: any = [];
   imagen: Imagen = {
     id: 0,
     alt: '',
     imgSRC: ''
   };
+  
+  edit: boolean = false;
 
-  constructor(private platilloServices: PlatilloService, private imagenServices: ImagenService) {    
+  ngOnInit() {
+    const params = this.activeRoute.snapshot.params;
+    if (params.id) {
+      this.getImagenes();
+      this.platilloServices.getPlatillo(params.id)
+        .subscribe(
+          res => {
+            this.edit = true;
+
+            this.platillo.id = res['id']
+            this.platillo.nombre = res['nombre']
+            this.platillo.ingredientes = res['ingredientes']
+            
+            //Obteniendo el id de la imagen asociada a la galeria
+            this.imagenes.forEach(elemento => {
+              if(elemento.menuId ==  this.platillo.id){
+                this.imagen.id = elemento.id;
+                this.imagen.alt = elemento.alt;
+                this.imagen.imgSRC = elemento.imgSRC;
+              }
+            })
+          },
+          err => console.error(err)
+        )
+    }
+  }
+
+  constructor(private platilloServices: PlatilloService, private imagenServices: ImagenService, private router: Router, private activeRoute: ActivatedRoute) {    
     let script = document.createElement("script");
     let script2 = document.createElement("script");
     let script3 = document.createElement("script");
@@ -45,22 +76,51 @@ export class Form2Component  {
   }
  ///Platillo
   savePlatillo(){
-    this.imagen.alt = this.platillo.nombre;
-
     this.platilloServices.savePlatillo(this.platillo)
     .subscribe(
       res => {
         console.log(res);
-
+        
         let respuesta = res['id'];
         this.imagen.menuId = respuesta;
+        this.imagen.alt = this.platillo.nombre;
         this.imagenServices.saveImagen(this.imagen)
         .subscribe(
-          res => console.log(res),
+          res => {
+            console.log(res),
+            this.router.navigate(['/tplatillo'])
+          },
           err => console.error(err) 
         )
       },
       err => console.error(err) 
+    )
+  }
+  
+  updatePlatillo(){
+    this.platilloServices.updatePlatillo(this.platillo.id, this.platillo)
+      .subscribe(
+        res => {
+          console.log(res)
+          this.imagen.alt = this.platillo.nombre;
+          this.imagenServices.updateImagen(this.imagen.id, this.imagen)
+            .subscribe(
+              res => {
+                console.log(res)
+              },
+              err => console.error(err)
+            )
+        },
+        err => console.error(err)
+      )
+  }
+
+  getImagenes(){
+    this.imagenServices.getImagenes().subscribe(
+      res => {
+        this.imagenes = res;
+      }, 
+      err => console.error(err)
     )
   }
 }

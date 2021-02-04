@@ -31,7 +31,7 @@ export class GaleriaService {
     return this.http.delete(`${this.URL}/${id}`);
   }
 
-  updateGaleria(id: string, updateGaleria: Galeria ){
+  updateGaleria(id: string|number, updateGaleria: Galeria ){
     return this.http.put(`${this.URL}/${id}`, updateGaleria);
   }
 }

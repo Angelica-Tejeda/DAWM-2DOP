@@ -25,6 +25,9 @@ const app_routes:Routes = [
     {path: 'tplatillo', component: TablaPlatilloComponent},
     {path: 'thistorial', component: TablaHistorialComponent},
     {path: 'formhistorial', component: FormHistorialComponent},
+
+    {path: 'forms/:id', component:FormsComponent},
+    {path: 'form2/:id', component:Form2Component},
    
     {path: '**', pathMatch: 'full', redirectTo: '' }
     
