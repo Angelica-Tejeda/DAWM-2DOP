@@ -27,7 +27,7 @@ const app_routes:Routes = [
     {path: 'thistorial', component: TablaHistorialComponent},
     {path: 'formhistorial', component: FormHistorialComponent},
 
-    {path: 'mail2', component:Mail2Component,},
+    {path: 'mail2/:id', component:Mail2Component,},
     {path: 'forms/:id', component:FormsComponent},
     {path: 'form2/:id', component:Form2Component},
    

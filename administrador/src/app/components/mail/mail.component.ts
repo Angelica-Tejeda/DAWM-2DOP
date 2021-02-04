@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CorreoService } from 'src/app/services/correo.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class MailComponent implements OnInit{
   correos: any = [];
 
 
-  constructor(private correoServices: CorreoService) {
+  constructor(private correoServices: CorreoService, private router: Router) {
     let script = document.createElement("script");
     let script2 = document.createElement("script");
     let script3 = document.createElement("script");
@@ -19,20 +20,16 @@ export class MailComponent implements OnInit{
     script2.src = "assets/dist/js/mail.js"
     script3.src = "assets/dist/js/demo.js"
    
-   
-
     let body = document.getElementsByTagName("body")[0]
     
-   
     body.appendChild(script);
     body.appendChild(script2);
     body.appendChild(script3);
-   }
+  }
 
   
-   ngOnInit() {
+  ngOnInit() {
     this.getCorreos();
-  
   }
 
   getCorreos(){
@@ -42,6 +39,10 @@ export class MailComponent implements OnInit{
       }, 
       err => console.error(err)
     )
+  }
+
+  verMensaje(id: string){
+    this.router.navigate([`mail2/${id}`]);
   }
 
 
